@@ -5,6 +5,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Auth1Controller;
+use App\Http\Controllers\TestAuthController;
+
 
 
 /*
@@ -27,9 +29,12 @@ Route::post('/login', [Auth1Controller::class, 'login']);
 
 Route::resource('test', TestController::class);
 Route::resource('auth', AuthController::class);
-Route::group(['middleware'=> ['auth:sanctum']], function(){
-   Route::apiResource('user', AuthController::class);
-   Route::post('logout', [Auth1Controller::class, 'logout']);
-  
 
-});
+// Route::group(['middleware'=> ['auth:sanctum']], function(){
+//     $request->Auth()->tokens()->delete();
+//     Auth()->guard('web')->logout();
+//    Route::post('/logout', [Auth1Controller::class, 'logout']);
+ 
+// });
+
+Route::resource('testAuth', TestAuthController::class);

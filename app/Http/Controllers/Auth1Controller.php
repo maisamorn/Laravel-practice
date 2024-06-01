@@ -15,23 +15,22 @@ class Auth1Controller extends Controller
         $user->email = $request->email;
         $user->save();
 
-        $token = $user->createToken('my-token')->plainTextToken;
+        $user->createToken('mytoken')->plainTextToken;
         return response()->json([
-            'token' => $token
+            'token' => "register successfull"
         ]);
     }
     public function login(Request $request){
         $user = Auth::where('email',$request->email)->first();
-        
         return response()->json([
-            'sms'=> 'Bad Request'
+            'sms'=> 'login successfully'
         ]);
-        $token = $user->createToken('my-token')->plainTextToken;
+        $token = $user->createToken('mytoken')->plainTextToken;
     }
     public function logout(Request $request){
         auth()->user()->tokens()->delete();
         return response()->json([
-           'message' => 'Successfully logged out'
+           'sms' => 'logout successfully'
         ]);
     }
    
